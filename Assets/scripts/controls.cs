@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class controls : MonoBehaviour
 {
+    public GameObject blueFire;
     Rigidbody2D player;
     public float speed = 2.5f, speedX, speedY;
     public bool sprint;
     public Animator frontMove;
+    
     // Start is called before the first frame update
     void Start()
     {
         speed = 2.5f;
         player = GetComponent<Rigidbody2D>();
         sprint = false;
+        blueFire.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,6 +54,13 @@ public class controls : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector2(4,4);
         }
-
+        //CombatMode
+        if(Input.GetKey(KeyCode.C))
+        {
+            blueFire.SetActive(true);
+        }
+        //PassiveMode
+        else if (Input.GetKey(KeyCode.P))
+           { blueFire.SetActive(false); }
     }
 }
