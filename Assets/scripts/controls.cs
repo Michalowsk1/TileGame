@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class controls : MonoBehaviour
 {
-    public GameObject blueFire;
-    Rigidbody2D player;
+    [Header("player")]
+    static public Rigidbody2D player;
     public float speed = 2.5f, speedX, speedY;
     public bool sprint;
     public Animator frontMove;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         speed = 2.5f;
         player = GetComponent<Rigidbody2D>();
         sprint = false;
-        blueFire.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,10 +31,10 @@ public class controls : MonoBehaviour
 
         frontMove.SetFloat("walkX", speedX);
 
-        player.velocity = new Vector2 (speedX, speedY);
+        player.velocity = new Vector2(speedX, speedY);
 
         //sprint & altering speed
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             sprint = true;
             speed = 4;
@@ -46,21 +46,17 @@ public class controls : MonoBehaviour
         }
 
         //flipping character
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            player.transform.localScale = new Vector2(-4,4);
+            player.transform.localScale = new Vector2(-4, 4);
         }
         else
         {
-            gameObject.transform.localScale = new Vector2(4,4);
+            gameObject.transform.localScale = new Vector2(4, 4);
         }
-        //CombatMode
-        if(Input.GetKey(KeyCode.C))
-        {
-            blueFire.SetActive(true);
-        }
-        //PassiveMode
-        else if (Input.GetKey(KeyCode.P))
-           { blueFire.SetActive(false); }
+
+        
     }
 }
+        
+
