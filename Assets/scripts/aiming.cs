@@ -24,7 +24,7 @@ public class aiming : MonoBehaviour
         if (distance < 6 && Input.GetKey(KeyCode.Space))
         {
             //transform.position = Vector2.MoveTowards(fireball.transform.position, enemy.transform.position, 0.01f);
-            fireball.AddForce(transform.right * 5);
+            fireball.AddForce(transform.right * 2);
         }
         else
         {
