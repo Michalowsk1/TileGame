@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class controls : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class controls : MonoBehaviour
     public float speed = 2.5f, speedX, speedY;
     public bool sprint;
     public Animator frontMove;
+    [SerializeField] public static int point;
+    public AudioSource squish;
 
 
     // Start is called before the first frame update
@@ -17,6 +20,7 @@ public class controls : MonoBehaviour
         speed = 2.5f;
         player = GetComponent<Rigidbody2D>();
         sprint = false;
+        point = 0;
     }
 
     // Update is called once per frame
@@ -54,9 +58,29 @@ public class controls : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector2(4, 4);
         }
-
-        
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "brown")
+        {
+            point++;
+            squish.Play();
+        }
+
+        else if (collision.gameObject.tag == "green")
+        {
+            point = point + 2;
+            squish.Play();
+        }
+
+        else if (collision.gameObject.tag == "gold")
+        {
+            point = point + 3;
+            squish.Play();
+        }
+    }
+ 
 }
         
 

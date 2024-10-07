@@ -6,6 +6,13 @@ TagManager:
   tags:
   - enemy
   - attack
+  - cave
+  - brown
+  - green
+  - gold
+  - goldcave
+  - greencave
+  - browncave
   layers:
   - Default
   - TransparentFX
